@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: What are SLAs?</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem;position:relative}
+
+/* Pop-out trigger card */
+.sla-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;width:100%;color:#1B2F5B;border:1px solid #A6B3D5;border-radius:8px;
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(93,112,174,0.28) 100%);
+  padding:34px 20px;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;
+  cursor:pointer;transition:background .2s ease,transform .15s ease;
+}
+.sla-btn:hover{
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(89,163,152,0.32) 100%);
+  transform:scale(1.015);
+}
+.sla-btn svg{flex-shrink:0}
+
+/* Modal */
+.overlay{
+  display:none;position:absolute;top:0;left:0;width:100%;min-height:100%;
+  background:rgba(27,47,91,.55);z-index:10;align-items:flex-start;justify-content:center;padding:20px;
+}
+.overlay.show{display:flex}
+.modal{
+  position:relative;width:100%;max-width:520px;margin-top:10px;
+  background:linear-gradient(to bottom,#ffffff 0%,#e8edf8 100%);
+  border:1px solid #d8dce8;border-radius:8px;padding:22px 24px;
+}
+.modal-close{
+  position:absolute;top:10px;right:12px;background:none;border:none;font-size:22px;line-height:1;
+  color:#59A398;cursor:pointer;font-weight:700;transition:color .15s;padding:4px 8px;
+}
+.modal-close:hover{color:#5D70AE}
+.eyebrow{text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:.05em;color:#59A398;margin-bottom:6px}
+.modal-title{font-weight:700;font-size:19px;color:#1B2F5B;margin-bottom:12px;padding-right:24px;text-wrap:balance}
+.modal p{font-size:13.5px;color:#444;line-height:1.65;margin-bottom:12px}
+.modal p:last-of-type{margin-bottom:0}
+
+.portal-link-btn{
+  display:inline-flex;align-items:center;gap:8px;margin-top:16px;background:#5D70AE;color:#fff;
+  text-decoration:none;font-size:13px;font-weight:600;padding:11px 16px;border-radius:6px;
+  font-family:'Inter',sans-serif;
+}
+.portal-link-btn:hover{background:#59A398}
+</style>
+</head>
+<body>
+
+<button class="sla-btn" onclick="document.getElementById('slaOverlay').classList.add('show')">
+  <svg width="38" height="38" viewBox="0 0 24 24">
+    <rect x="2.5" y="7.5" width="14" height="10.5" rx="1.8" fill="none" stroke="#5D70AE" stroke-width="1.6"/>
+    <path d="M7.5 7.5V6a1.8 1.8 0 0 1 1.8-1.8h1.4A1.8 1.8 0 0 1 12.5 6v1.5" fill="none" stroke="#5D70AE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M2.5 12.2h14" stroke="#5D70AE" stroke-width="1.6"/>
+    <circle cx="17.5" cy="16.5" r="5" fill="#ffffff" stroke="#5D70AE" stroke-width="1.6"/>
+    <path d="M17.5 14v2.7l1.8 1.1" fill="none" stroke="#5D70AE" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  What are SLA's?
+</button>
+
+<div class="overlay" id="slaOverlay" onclick="if(event.target===this)this.classList.remove('show')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('slaOverlay').classList.remove('show')">&times;</button>
+    <div class="eyebrow">Set Yourself Up for Success</div>
+    <div class="modal-title">What is an SLA?</div>
+    <p>An SLA, or Service Level Agreement, is Propelr's internal commitment for how quickly a specific type of support ticket gets addressed. Every ticket category, boarding, equipment, underwriting, and more, has its own SLA window attached to it.</p>
+    <p>Knowing the SLA for a ticket lets you set the right expectation with your merchant up front, instead of guessing at a timeline or promising something faster than what's realistic.</p>
+    <p>If a ticket is approaching or has passed its SLA, that's your cue to follow up, rather than wait indefinitely and let the merchant wonder what's happening.</p>
+    <a class="portal-link-btn" href="https://propelrpay1.sharepoint.com/sites/Employee-Portal/SitePages/Tickets-%26-SLAs.aspx#stratus-ticket-categories-slas" target="_blank" rel="noopener">View all ticket categories and SLAs on the Employee Portal <span>&#8594;</span></a>
+  </div>
+</div>
+
+</body>
+</html>
