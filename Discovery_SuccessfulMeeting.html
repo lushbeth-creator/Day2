@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Discovery &amp; Decision Making</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.outer{
+  border:1px solid #d8dce8;
+  border-radius:8px;
+  overflow:hidden;
+  background:linear-gradient(to bottom,#ffffff 0%,#e8edf8 100%);
+}
+
+.panel{padding:22px 24px}
+
+/* Section header */
+.section-badge{
+  display:inline-flex;align-items:center;
+  font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+  color:#59A398;background:#DAF3EF;border:1px solid #59A398;border-radius:5px;
+  padding:3px 9px;margin-bottom:10px;
+}
+.eyebrow{text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:.05em;color:#59A398;margin-bottom:6px}
+.panel-title{font-weight:700;font-size:20px;color:#1B2F5B;margin-bottom:10px;text-wrap:balance}
+.sub-title{font-weight:700;font-size:16px;color:#1B2F5B;margin:22px 0 4px 0;text-wrap:balance}
+.body-text{font-size:16px;color:#444;line-height:1.6;margin-bottom:14px}
+.rule-line{height:1px;background:#d8dce8;margin:20px 0}
+
+/* Section divider banner */
+.section-divider{
+  background:#1B2F5B;color:#fff;font-weight:700;font-size:12.5px;
+  letter-spacing:.05em;text-transform:uppercase;
+  padding:11px 24px;margin:32px -24px 24px -24px;
+}
+
+/* 4-up card grid (meeting cards / closing cards) */
+.card-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+@media (max-width:760px){.card-grid-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.card-grid-4{grid-template-columns:1fr}}
+
+.info-card{background:#F3F6FF;border:1px solid #A6B3D5;border-radius:8px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
+.info-card-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.info-card-icon{
+  width:40px;height:40px;border-radius:9px;background:#E8EDF8;border:1px solid #A6B3D5;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.info-card-icon svg{width:21px;height:21px;stroke:#59A398;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.info-card-title{font-weight:700;font-size:18px;color:#1B2F5B;line-height:1.25;text-wrap:balance}
+.card-list{list-style:none}
+.card-list li{position:relative;padding-left:16px;font-size:14.5px;color:#444;line-height:1.6;margin-bottom:8px}
+.card-list li:last-child{margin-bottom:0}
+.card-list li:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#59A398}
+
+.meeting-card{
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(93,112,174,0.28) 100%);
+  transition:background .25s ease,transform .25s ease;
+}
+.meeting-card:hover{
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(89,163,152,0.32) 100%);
+  transform:scale(1.035);
+}
+
+/* Question sits below each step, inside the card, light divider above it */
+.step-question{
+  margin-top:16px;padding-top:14px;border-top:1px solid #d8dce8;
+}
+.step-question-label{
+  font-size:11.5px;text-transform:uppercase;font-weight:700;letter-spacing:.04em;
+  color:#59A398;margin-bottom:6px;
+}
+.step-question-text{
+  color:#1B2F5B;font-weight:700;font-size:14.5px;line-height:1.5;
+}
+
+/* Intro text that sits above a boxed section, on the transparent background */
+.section-intro{padding:0 2px 16px 2px}
+.section-intro .panel-title{margin-top:8px}
+
+/* Field tool cards */
+.field-tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+@media (max-width:520px){.field-tool-grid{grid-template-columns:1fr}}
+.field-tool-card{background:#F3F6FF;border:1px solid #A6B3D5;border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column}
+.field-tool-icon{
+  width:34px;height:34px;border-radius:8px;background:#E8EDF8;border:1px solid #A6B3D5;
+  display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+}
+.field-tool-icon svg{width:18px;height:18px;stroke:#5D70AE;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.field-tool-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#59A398;margin-bottom:4px}
+.field-tool-title{font-weight:700;font-size:14.5px;color:#1B2F5B;margin-bottom:6px}
+.field-tool-desc{font-size:12px;color:#444;line-height:1.5;margin-bottom:12px;flex-grow:1}
+.field-tool-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#5D70AE;color:#fff;border-radius:7px;padding:.6rem 1rem;
+  font-size:12.5px;font-weight:700;text-decoration:none;
+  transition:background .15s;align-self:flex-start;
+}
+.field-tool-btn:hover{background:#59A398}
+</style>
+</head>
+<body>
+
+<!-- ===================== DISCOVERY INTRO (sits above the box) ===================== -->
+<div class="section-intro">
+  <span class="section-badge">30 Min · Learn, Don't Sell</span>
+  <div class="panel-title">Discovery Appointment</div>
+  <p class="body-text">Leave with their last 2 to 3 months of processing statements. Your only job on this visit is to understand their world: pain points, process, who decides, and when. You are building a map, not making a pitch.</p>
+</div>
+
+<div class="outer">
+  <div class="panel">
+
+    <div class="sub-title" style="margin-top:0;">What Does a Successful Meeting Look Like?</div>
+
+    <div class="card-grid-4">
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg></div>
+          <div class="info-card-title">Build Rapport</div>
+        </div>
+        <ul class="card-list">
+          <li>Building rapport is ongoing</li>
+          <li>Starts at the first impression</li>
+          <li>Being curious about the merchant on a personal level helps them open up</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">What's your go-to ice breaker when you walk in somewhere for the first time?</div>
+        </div>
+      </div>
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+          <div class="info-card-title">Set the Agenda</div>
+        </div>
+        <ul class="card-list">
+          <li>Set expectations for what you plan to cover</li>
+          <li>Tell them what you want to do and why</li>
+          <li>Be mindful of their time</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">What does a confident, natural agenda sound like in your own words?</div>
+        </div>
+      </div>
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.3 9.3a2.7 2.7 0 1 1 3.7 2.5c-.9.4-1.3 1-1.3 2"/><path d="M12 17.2v.1"/></svg></div>
+          <div class="info-card-title">Fact-Finding Questions</div>
+        </div>
+        <ul class="card-list">
+          <li>Should be about 70% of your appointment</li>
+          <li>Goal is to uncover what they value and any pains they have</li>
+          <li>Identify what Propelr can genuinely solve</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">What are two or three questions that would actually tell you if there's a real opportunity here?</div>
+        </div>
+      </div>
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><path d="M6 4v16M6 4h11l-2.3 3.5L17 11H6"/></svg></div>
+          <div class="info-card-title">Qualify Next Steps</div>
+        </div>
+        <ul class="card-list">
+          <li>Find out their timeline for making decisions</li>
+          <li>What are the roadblocks to switching?</li>
+          <li>Which "if I am able to, will you" promises could you use?</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">Think about a real objection you've already heard. What did you do with it, and what would you do differently now?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-title">What Questions Do I Need To Ask?</div>
+    <div class="field-tool-grid">
+      <div class="field-tool-card">
+        <div class="field-tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8l1.5 1.5L14 6"/><path d="M8 13h8M8 16h5"/></svg></div>
+        <div class="field-tool-eyebrow">Field Tool</div>
+        <div class="field-tool-title">Customer Profile</div>
+        <div class="field-tool-desc">Capture merchant needs, concerns, and top priorities before every pitch.</div>
+        <a class="field-tool-btn" href="https://propelrpay1.sharepoint.com/:b:/s/Training/IQD2iO87zIpUToGCLhbf_tLbAYKdkWI9deqEFB_1GFwYQ4E?e=Q5RVae" target="_blank" rel="noopener">Click here to download</a>
+      </div>
+      <div class="field-tool-card">
+        <div class="field-tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <div class="field-tool-eyebrow">Field Tool</div>
+        <div class="field-tool-title">Merchant Checklist</div>
+        <div class="field-tool-desc">Your discovery conversation guide. Use on every merchant visit to capture the right information.</div>
+        <a class="field-tool-btn" href="https://propelrpay1.sharepoint.com/:b:/s/Training/IQBwwMwrPnGJQo1oNgM2hWG-AYfOAo0w9d5H0xM3n_TPWb8?e=EBOQBY" target="_blank" rel="noopener">Click here to download</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
