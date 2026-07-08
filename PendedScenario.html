@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Pended Application Scenario</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.flip-card{
+  height:250px;
+  perspective:1200px;
+  cursor:pointer;
+}
+.flip-card:focus{outline:none}
+@keyframes cardPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.015)}
+}
+.flip-card:hover{animation:cardPulse 1s ease-in-out infinite}
+.flip-card.flipped:hover{animation:none}
+.flip-inner{
+  position:relative;width:100%;height:100%;
+  transition:transform .6s;transform-style:preserve-3d;
+}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg)}
+
+.flip-face{
+  position:absolute;inset:0;backface-visibility:hidden;
+  border:1px solid #A6B3D5;border-radius:8px;padding:18px 22px;
+  display:flex;flex-direction:column;
+}
+.flip-front{
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(93,112,174,0.28) 100%);
+  justify-content:flex-start;overflow-y:auto;
+}
+.flip-back{
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(89,163,152,0.28) 100%);
+  transform:rotateY(180deg);
+  align-items:center;justify-content:center;gap:14px;text-align:center;
+}
+
+.eyebrow{text-transform:uppercase;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:#59A398;margin-bottom:5px}
+.front-title{font-weight:700;font-size:16px;color:#1B2F5B;margin-bottom:10px}
+.flip-front p{font-size:12.5px;color:#444;line-height:1.6;margin-bottom:10px}
+.flip-front p:last-of-type{margin-bottom:0}
+.flip-hint{
+  font-size:12px;color:#5D70AE;font-weight:600;
+  display:flex;align-items:center;gap:6px;margin-top:auto;padding-top:10px;
+}
+.flip-hint svg{width:14px;height:14px;flex-shrink:0}
+
+.flip-back svg.q-icon{flex-shrink:0}
+.back-q{font-weight:700;font-size:16px;color:#1B2F5B;line-height:1.45;max-width:420px}
+.back-q2{font-size:13px;color:#444;font-weight:600;line-height:1.5;max-width:420px}
+</style>
+</head>
+<body>
+
+<div class="flip-card" tabindex="0" role="button" aria-label="Flip card, pended application scenario">
+  <div class="flip-inner">
+    <div class="flip-face flip-front">
+      <div class="eyebrow">Scenario</div>
+      <div class="front-title">The Pended Application</div>
+      <p>You submit an application Friday afternoon for a custom cake studio that collects deposits months before delivery. Monday morning, an email is waiting: the application is pending.</p>
+      <p>The reason: the Future Delivery Questionnaire was never completed. It's not in the file because you never collected it. The merchant is expecting good news this week.</p>
+      <div class="flip-hint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#5D70AE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M20 10a8 8 0 0 0-14.9-3.5"/><path d="M4 14a8 8 0 0 0 14.9 3.5"/></svg>
+        Tap to flip
+      </div>
+    </div>
+    <div class="flip-face flip-back">
+      <svg class="q-icon" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5D70AE" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-4 4V5z"/><path d="M10.6 9.2a1.8 1.8 0 1 1 2.4 1.7c-.6.2-.9.6-.9 1.2"/><path d="M12.1 13.6v.1"/></svg>
+      <div class="back-q">What would your next step be?</div>
+      <div class="back-q2">Think it through: how do you follow up with the merchant, and what happens once you have the questionnaire in hand?</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.flip-card').forEach(function(card){
+    function toggle(){ card.classList.toggle('flipped'); }
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+</script>
+</body>
+</html>
