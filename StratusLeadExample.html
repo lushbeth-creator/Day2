@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Stratus Data Entry</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem;position:relative}
+
+.outer{
+  position:relative;
+  border:1px solid #d8dce8;
+  border-radius:8px;
+  overflow:hidden;
+  background:linear-gradient(to bottom,#ffffff 0%,#e8edf8 100%);
+}
+.panel{padding:22px 24px}
+
+.eyebrow{text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:.05em;color:#59A398;margin-bottom:6px}
+.panel-title{font-weight:700;font-size:20px;color:#1B2F5B;margin-bottom:10px;text-wrap:balance}
+.body-text{font-size:14px;color:#444;line-height:1.6;margin-bottom:14px}
+
+/* Intro text that sits above the box, on the transparent background */
+.section-intro{padding:0 2px 16px 2px}
+
+/* Data entry list */
+.notes-label{font-weight:700;font-size:13px;color:#1B2F5B;margin-bottom:8px}
+.doc-list{margin:0 0 16px 0;padding:0;list-style:none}
+.doc-list li{font-size:13.5px;color:#444;line-height:1.6;padding-left:16px;position:relative;margin-bottom:8px}
+.doc-list li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#A6B3D5}
+.doc-list li:last-child{margin-bottom:0}
+.sub-list{margin:6px 0 0 16px;padding:0;list-style:none}
+.sub-list li{font-size:13px;color:#59A398;font-weight:600;line-height:1.55;padding-left:14px;position:relative;margin-bottom:4px}
+.sub-list li::before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#59A398}
+
+/* Pop-out trigger button */
+.example-btn{
+  display:inline-flex;align-items:center;gap:9px;background:#5D70AE;color:#fff;border:none;
+  border-radius:7px;padding:12px 18px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:700;
+  cursor:pointer;transition:background .15s;
+}
+.example-btn:hover{background:#59A398}
+.example-btn svg{flex-shrink:0}
+
+/* Modal */
+.overlay{
+  display:none;position:absolute;top:0;left:0;width:100%;min-height:100%;
+  background:rgba(27,47,91,.55);z-index:10;align-items:flex-start;justify-content:center;padding:20px;
+}
+.overlay.show{display:flex}
+.modal{
+  position:relative;width:100%;max-width:900px;margin-top:10px;
+  background:#ffffff;border:1px solid #d8dce8;border-radius:8px;padding:16px;
+}
+.modal-close{
+  position:absolute;top:8px;right:10px;background:none;border:none;font-size:22px;line-height:1;
+  color:#59A398;cursor:pointer;font-weight:700;transition:color .15s;padding:4px 8px;z-index:2;
+}
+.modal-close:hover{color:#5D70AE}
+.modal-label{
+  font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#59A398;
+  margin-bottom:8px;padding-right:24px;
+}
+.fake-tag{
+  display:inline-block;font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;
+  color:#9C6B00;background:#fff8e6;border:1px solid #B8860B;border-radius:4px;padding:2px 7px;margin-left:8px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="section-intro">
+  <div class="eyebrow">Working a Deal in Stratus</div>
+  <div class="panel-title">Stratus Data Entry</div>
+  <p class="body-text">When you are in Stratus, go to your lead and check for support notes and tickets.</p>
+</div>
+
+<div class="outer">
+  <div class="panel">
+
+    <div class="notes-label">Getting it right the first time:</div>
+    <ul class="doc-list">
+      <li>It's vitally important to correctly enter all fields in Stratus and ensure the data is as accurate as possible to avoid delays</li>
+      <li>Validate the TIN / legal, SSN, business start date, banking details, and ownership percentages for all owners
+        <ul class="sub-list">
+          <li>These steps shorten processing time and lead to faster approvals</li>
+        </ul>
+      </li>
+      <li>Accurately label all attachments, this is key for our onboarding and API feeds
+        <ul class="sub-list">
+          <li>Titles like "IPG image" aren't helpful</li>
+        </ul>
+      </li>
+      <li>To resolve possible data issues, navigate to the Online Agreement Forms tab, then the Actions column</li>
+      <li>Add a cover sheet for equipment and gateway details</li>
+    </ul>
+
+    <button class="example-btn" onclick="document.getElementById('leadOverlay').classList.add('show')">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18"/><circle cx="7" cy="6.5" r=".4" fill="#ffffff" stroke="none"/></svg>
+      See an Example Lead in Stratus
+    </button>
+
+  </div>
+
+  <div class="overlay" id="leadOverlay" onclick="if(event.target===this)this.classList.remove('show')">
+    <div class="modal">
+      <button class="modal-close" onclick="document.getElementById('leadOverlay').classList.remove('show')">&times;</button>
+      <div class="modal-label">Example Lead<span class="fake-tag">Fake Data</span></div>
+
+      <img src="https://propelrpay1.sharepoint.com/:i:/s/Training/IQAxXZio33PlQaxkzR160qBHAT4HF8HoP4mOcSMYXZ7_ijk?e=fduIG0" alt="Example lead in Stratus" style="width:100%;height:auto;display:block;border-radius:6px;">
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
