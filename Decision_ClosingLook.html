@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Decision Appointment</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.outer{
+  border:1px solid #d8dce8;
+  border-radius:8px;
+  overflow:hidden;
+  background:linear-gradient(to bottom,#ffffff 0%,#e8edf8 100%);
+}
+.panel{padding:22px 24px}
+
+.eyebrow{text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:.05em;color:#59A398;margin-bottom:6px}
+.panel-title{font-weight:700;font-size:20px;color:#1B2F5B;margin-bottom:10px;text-wrap:balance}
+.sub-title{font-weight:700;font-size:16px;color:#1B2F5B;margin:0 0 4px 0;text-wrap:balance}
+.body-text{font-size:16px;color:#444;line-height:1.6;margin-bottom:14px}
+
+/* Intro text that sits above the box, on the transparent background */
+.section-intro{padding:0 2px 16px 2px}
+
+/* 4-up card grid */
+.card-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+@media (max-width:760px){.card-grid-4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.card-grid-4{grid-template-columns:1fr}}
+
+.info-card{background:#F3F6FF;border:1px solid #A6B3D5;border-radius:8px;padding:1.3rem 1.4rem;display:flex;flex-direction:column}
+.info-card-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.info-card-icon{
+  width:40px;height:40px;border-radius:9px;background:#E8EDF8;border:1px solid #A6B3D5;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.info-card-icon svg{width:21px;height:21px;stroke:#59A398;stroke-width:1.7;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.info-card-title{font-weight:700;font-size:18px;color:#1B2F5B;line-height:1.25;text-wrap:balance}
+.card-list{list-style:none}
+.card-list li{position:relative;padding-left:16px;font-size:14.5px;color:#444;line-height:1.6;margin-bottom:8px}
+.card-list li:last-child{margin-bottom:0}
+.card-list li:before{content:'';position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:#59A398}
+
+.meeting-card{
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(93,112,174,0.28) 100%);
+  transition:background .25s ease,transform .25s ease;
+}
+.meeting-card:hover{
+  background:linear-gradient(to bottom,#ffffff 0%,rgba(89,163,152,0.32) 100%);
+  transform:scale(1.035);
+}
+
+.step-question{
+  margin-top:16px;padding-top:14px;border-top:1px solid #d8dce8;
+}
+.step-question-label{
+  font-size:11.5px;text-transform:uppercase;font-weight:700;letter-spacing:.04em;
+  color:#59A398;margin-bottom:6px;
+}
+.step-question-text{
+  color:#1B2F5B;font-weight:700;font-size:14.5px;line-height:1.5;
+}
+
+/* Field tool cards */
+.field-tool-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:16px}
+.field-tool-card{background:#F3F6FF;border:1px solid #A6B3D5;border-radius:8px;padding:1rem 1.1rem;display:flex;flex-direction:column}
+.field-tool-icon{
+  width:34px;height:34px;border-radius:8px;background:#E8EDF8;border:1px solid #A6B3D5;
+  display:flex;align-items:center;justify-content:center;margin-bottom:10px;
+}
+.field-tool-icon svg{width:18px;height:18px;stroke:#5D70AE;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.field-tool-eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#59A398;margin-bottom:4px}
+.field-tool-title{font-weight:700;font-size:14.5px;color:#1B2F5B;margin-bottom:6px}
+.field-tool-desc{font-size:12px;color:#444;line-height:1.5;margin-bottom:12px;flex-grow:1}
+.field-tool-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:#5D70AE;color:#fff;border-radius:7px;padding:.6rem 1rem;
+  font-size:12.5px;font-weight:700;text-decoration:none;
+  transition:background .15s;align-self:flex-start;
+}
+.field-tool-btn:hover{background:#59A398}
+</style>
+</head>
+<body>
+
+<!-- ===================== DECISION INTRO (sits above the box) ===================== -->
+<div class="section-intro">
+  <div class="eyebrow">Running the Meeting</div>
+  <div class="panel-title">Decision Appointment</div>
+  <p class="body-text">Come back with a solution built around what Discovery taught you. Get to a real yes or no. Maybe is not an answer.</p>
+</div>
+
+<div class="outer">
+  <div class="panel">
+
+    <div class="sub-title">What Does Closing Look Like?</div>
+
+    <div class="card-grid-4">
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r=".6" fill="#59A398"/></svg></div>
+          <div class="info-card-title">Present Solutions</div>
+        </div>
+        <ul class="card-list">
+          <li>If you sell on price, you lose on price</li>
+          <li>Build the pitch around what Discovery taught you</li>
+          <li>Speak to their specific pain points, not a generic feature list</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">What types of benefits could our solutions provide to this merchant specifically?</div>
+        </div>
+      </div>
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z"/><path d="M8.5 12l2 2 4.5-5"/></svg></div>
+          <div class="info-card-title">Address Closing Concerns</div>
+        </div>
+        <ul class="card-list">
+          <li>Acknowledge the concern before you address it</li>
+          <li>Reframe it using what you learned in Discovery</li>
+          <li>Don't let a concern turn into a stall</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">What's a real concern you've heard, and how would you reframe it using what Discovery taught you?</div>
+        </div>
+      </div>
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v10H9l-4 4V5z"/><path d="M10 11l2 2 4-4"/></svg></div>
+          <div class="info-card-title">Ask for the Sale</div>
+        </div>
+        <ul class="card-list">
+          <li>Use "if I am able to, will you..."</li>
+          <li>Set the stage and timeline for install</li>
+          <li>Confirm they're ready to move forward today</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">What closing techniques have worked for you in the field?</div>
+        </div>
+      </div>
+      <div class="info-card meeting-card">
+        <div class="info-card-head">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24"><path d="M3 7a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7z"/></svg></div>
+          <div class="info-card-title">Collect Documentation</div>
+        </div>
+        <ul class="card-list">
+          <li>Current statements (payments) and voided check</li>
+          <li>EIN and driver's license</li>
+          <li>Any documents outlined by MCC in UW Guidelines</li>
+        </ul>
+        <div class="step-question">
+          <div class="step-question-label">Discuss</div>
+          <div class="step-question-text">What resources can you use to be sure you're gathering all the correct documents?</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field-tool-grid" style="margin-top:22px;">
+      <div class="field-tool-card">
+        <div class="field-tool-icon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h6M8 16h4"/></svg></div>
+        <div class="field-tool-eyebrow">Bring This to the Close</div>
+        <div class="field-tool-title">Merchant Services Pre-Application</div>
+        <div class="field-tool-desc">If it's a yes, don't leave without it. Get business, owner, location, and banking info down while you're still in the room.</div>
+        <a class="field-tool-btn" href="https://propelrpay1.sharepoint.com/:b:/s/Training/IQBhoVD7Ip_OR6K9oSrryIxqAbrmwlftvLyiKEK9I_1XHME?e=eZYpNR" target="_blank" rel="noopener">Click here to download</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
