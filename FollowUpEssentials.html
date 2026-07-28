@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Follow Up Essentials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE; --green:#59A398; --navy:#1B2F5B; --gray:#444;
+    --border:#d8dce8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:transparent; font-family:'Inter',sans-serif; color:var(--gray); padding:1rem;
+  }
+
+  .eyebrow-green{
+    font-weight:700; font-size:12px; color:var(--green); text-transform:uppercase;
+    letter-spacing:.05em; margin:0 0 16px;
+  }
+
+  .follow-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  .follow-card{
+    border:1px solid var(--border); border-radius:8px; overflow:hidden;
+    background:linear-gradient(to bottom, #ffffff 0%, #e4e9f7 100%);
+    padding:18px 16px; display:flex; flex-direction:column; align-items:center;
+    text-align:center;
+  }
+
+  .icon-circle{
+    width:60px; height:60px; border-radius:16px;
+    background:linear-gradient(135deg, #ffffff 0%, #dbe2f5 100%);
+    border:1px solid #ccd5ee;
+    display:flex; align-items:center; justify-content:center; margin-bottom:10px;
+    flex-shrink:0;
+  }
+  .icon-circle svg{width:28px; height:28px;}
+
+  .card-title{
+    font-weight:700; font-size:15px; color:var(--navy); text-transform:uppercase;
+    letter-spacing:.03em; margin:0 0 8px;
+  }
+  .card-question{
+    font-size:14px; font-weight:700; color:var(--blue); line-height:1.5; margin:0 0 12px;
+  }
+
+  .doc-list{margin:0 0 12px; padding:0; list-style:none; text-align:left; width:100%;}
+  .doc-list li{
+    font-size:14px; color:#444; line-height:1.5; padding-left:14px;
+    position:relative; margin-bottom:7px;
+  }
+  .doc-list li::before{
+    content:""; position:absolute; left:0; top:7px; width:5px; height:5px;
+    border-radius:50%; background:var(--green);
+  }
+  .doc-list li:last-child{margin-bottom:0;}
+
+  .discuss{
+    font-size:14px; color:var(--gray); line-height:1.5; text-align:left; width:100%;
+    margin-top:auto; padding-top:12px; border-top:1px solid var(--border);
+  }
+  .discuss strong{color:var(--navy);}
+
+  @media (max-width:900px){
+    .follow-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:520px){
+    .follow-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<p class="eyebrow-green">Follow Up Essentials</p>
+
+<div class="follow-grid">
+
+  <div class="follow-card">
+    <div class="icon-circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5D70AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    </div>
+    <p class="card-title">Who</p>
+    <p class="card-question">Who did you speak with when you visited?</p>
+    <ul class="doc-list">
+      <li>Leave a good impression on every employee, you never know who you're talking to</li>
+      <li>Note who you spoke with and any related notes in your tracker</li>
+      <li>Connect with the owner or person you spoke with on social media</li>
+    </ul>
+    <p class="discuss"><strong>Discuss:</strong> Why is it important to treat every person you talk to with respect and courtesy?</p>
+  </div>
+
+  <div class="follow-card">
+    <div class="icon-circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5D70AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9 2h6"/></svg>
+    </div>
+    <p class="card-title">When</p>
+    <p class="card-question">When do you follow up if you don't set the meeting?</p>
+    <ul class="doc-list">
+      <li>Follow up within 48 hours</li>
+      <li>Try calling or sending an email with more information</li>
+      <li>If applicable, honor the timeline given to you by the merchant for how they make decisions</li>
+    </ul>
+    <p class="discuss"><strong>Discuss:</strong> In your experience, what has been a typical follow-up timeline?</p>
+  </div>
+
+  <div class="follow-card">
+    <div class="icon-circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5D70AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>
+    </div>
+    <p class="card-title">What</p>
+    <p class="card-question">What methods or strategies should I use for follow-up?</p>
+    <ul class="doc-list">
+      <li>Social media</li>
+      <li>Check to see what promotions the business is running</li>
+      <li>Leave reviews on the business to get your name out there</li>
+      <li>If applicable, come back as a customer</li>
+      <li>Use what you learned in previous conversations to share industry info that will help their business</li>
+    </ul>
+    <p class="discuss"><strong>Discuss:</strong> What other strategies have you used to stay connected to a prospect?</p>
+  </div>
+
+  <div class="follow-card">
+    <div class="icon-circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#5D70AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M10 2h4"/><path d="M17.5 5.5l1.5-1.5"/></svg>
+    </div>
+    <p class="card-title">How</p>
+    <p class="card-question">How do I set my next step to follow up?</p>
+    <ul class="doc-list">
+      <li>Lock in permission to revisit by saying, "I will be back in the area on X day, I will stop back in then. Does that work for you?"</li>
+      <li>Show up when you said you would to establish trust</li>
+      <li>Once the prospect is qualified, move them from your tracker into Stratus as a lead</li>
+      <li>Use Stratus to review all set follow-ups for each day</li>
+    </ul>
+    <p class="discuss"><strong>Discuss:</strong> What other actions can be taken to ensure you are accountable for follow-ups?</p>
+  </div>
+
+</div>
+
+</body>
+</html>
