@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Day 2: Prospecting, Appointments &amp; Follow-Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE; --teal:#59A398; --navy:#1B2F5B; --gray:#444;
+    --border:#d8dce8; --gradbottom:#e8edf8;
+    --tip-border:#A6B3D5; --tip-bg:#F3F6FF;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:0; background:transparent;
+    font-family:'Inter',sans-serif; color:var(--gray);
+  }
+  .wrap{width:100%; padding:16px; box-sizing:border-box;}
+
+  .flight-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .flight-card{
+    background:linear-gradient(to bottom, #ffffff 0%, var(--gradbottom) 100%);
+    border:1px solid var(--border); border-radius:10px;
+    padding:20px 18px;
+    display:flex; flex-direction:column;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .flight-card:hover{
+    transform:translateY(-2px) scale(1.01);
+    box-shadow:0 6px 16px rgba(27,47,91,.10);
+  }
+
+  .icon-window{
+    width:40px; height:40px; border-radius:8px;
+    background:linear-gradient(to bottom, var(--tip-bg) 0%, #E4E9F7 100%);
+    border:1px solid var(--tip-border);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:14px; flex-shrink:0;
+  }
+  .icon-window svg{
+    width:20px; height:20px; stroke:var(--teal); fill:none;
+    stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;
+  }
+
+  .card-eyebrow{
+    color:var(--teal); text-transform:uppercase; font-size:12px;
+    font-weight:700; letter-spacing:.06em; margin:0 0 8px;
+  }
+  .card-title{color:var(--navy); font-weight:700; font-size:16px; line-height:1.35; margin:0 0 10px;}
+  .card-body{color:#555; font-size:14px; line-height:1.6; margin:0;}
+
+  .section{margin-bottom:28px;}
+  .section:last-child{margin-bottom:0;}
+  .section .eyebrow{
+    color:var(--teal); font-size:12px; font-weight:700;
+    letter-spacing:.04em; text-transform:uppercase; margin:0 0 10px;
+  }
+
+  .prompt{
+    padding:22px 24px;
+    background:linear-gradient(to bottom, #ffffff 0%, var(--gradbottom) 100%);
+    border:1px solid var(--border); border-radius:8px;
+  }
+  .prompt h3{color:var(--navy); font-size:18px; margin:0 0 12px;}
+  .prompt ul{margin:0; padding-left:18px;}
+  .prompt li{font-size:14px; color:#555; margin-bottom:8px; line-height:1.5;}
+  .prompt li:last-child{margin-bottom:0;}
+
+  @media (max-width:900px){
+    .flight-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="section">
+    <div class="flight-grid">
+      <div class="flight-card">
+        <div class="icon-window">
+          <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M20 20l-5.2-5.2"/></svg>
+        </div>
+        <p class="card-eyebrow">Prospecting</p>
+        <h3 class="card-title">Prospecting 101</h3>
+        <p class="card-body">Who to approach, how to start the conversation, and building rapport during the first visit.</p>
+      </div>
+      <div class="flight-card">
+        <div class="icon-window">
+          <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M8 3v4M16 3v4"/></svg>
+        </div>
+        <p class="card-eyebrow">Appointments</p>
+        <h3 class="card-title">Setting the Appointment</h3>
+        <p class="card-body">Building rapport, asking the right questions, and locking in a clear next step.</p>
+      </div>
+      <div class="flight-card">
+        <div class="icon-window">
+          <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-3-6.7M21 4v5h-5"/></svg>
+        </div>
+        <p class="card-eyebrow">Follow-Up</p>
+        <h3 class="card-title">Follow-Up Essentials</h3>
+        <p class="card-body">Staying connected with a prospect and holding yourself accountable after every visit.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="eyebrow">Recap</p>
+    <div class="prompt">
+      <h3>Let's Hear It</h3>
+      <ul>
+        <li>What did you take away from the Day 1 prospecting eLearning? Anything that clicked or anything worth revisiting?</li>
+        <li>Did you get a chance to try prospecting on your own after Day 1? What happened?</li>
+        <li>What questions came up from the eLearning that you'd like to work through before we dive into today's material?</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
