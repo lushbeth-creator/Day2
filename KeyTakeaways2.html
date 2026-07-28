@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Day 2: From Prospecting to Decision</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE; --green:#59A398; --navy:#1B2F5B; --gray:#444;
+    --border:#d8dce8; --gradbottom:#e8edf8;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:0; background:transparent;
+    font-family:'Inter',sans-serif; color:var(--gray);
+  }
+  .wrap{width:100%;}
+
+  .flight-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .flight-card{
+    border:1px solid var(--border); border-radius:8px; overflow:hidden;
+    background:linear-gradient(to bottom, #ffffff 0%, var(--gradbottom) 100%);
+    padding:26px 24px;
+  }
+  .flight-card h3{color:var(--navy); font-size:18px; margin:0 0 10px;}
+  .flight-card p{margin:0; font-size:15px; color:#555; line-height:1.5;}
+
+  .section{margin-bottom:28px;}
+  .section:last-child{margin-bottom:0;}
+  .section .eyebrow{
+    color:var(--green); font-size:12px; font-weight:700;
+    letter-spacing:.04em; text-transform:uppercase; margin:0 0 10px;
+  }
+
+  .prompt{
+    padding:22px 24px;
+    background:linear-gradient(to bottom, #ffffff 0%, var(--gradbottom) 100%);
+    border:1px solid var(--border); border-radius:8px;
+  }
+  .prompt h3{color:var(--navy); font-size:18px; margin:0 0 12px;}
+  .prompt ul{margin:0; padding-left:18px;}
+  .prompt li{font-size:15px; color:#555; margin-bottom:8px; line-height:1.5;}
+  .prompt li:last-child{margin-bottom:0;}
+
+  @media (max-width:900px){
+    .flight-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="section">
+    <div class="flight-grid">
+      <div class="flight-card">
+        <h3>Prospecting &amp; The Elevator Pitch</h3>
+        <p>Who to approach, how to start the conversation, and delivering a confident two-minute pitch.</p>
+      </div>
+      <div class="flight-card">
+        <h3>Purposeful Follow-Up</h3>
+        <p>Keeping momentum with a prospect when the meeting isn't secured on the first ask.</p>
+      </div>
+      <div class="flight-card">
+        <h3>Discovery to Decision</h3>
+        <p>Leading an effective Discovery meeting and transitioning to the Decision meeting to ask for the business.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="eyebrow">Recap</p>
+    <div class="prompt">
+      <h3>Let's Hear It</h3>
+      <ul>
+        <li>What did you take away from the Day 1 prospecting eLearning? Anything that clicked or anything worth revisiting?</li>
+        <li>Did you get a chance to try prospecting on your own after Day 1? What happened?</li>
+        <li>What questions came up from the eLearning that you'd like to work through before we dive into today's material?</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
