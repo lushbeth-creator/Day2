@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Qualifying Next Steps</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE; --green:#59A398; --navy:#1B2F5B; --gray:#444;
+    --border:#d8dce8; --gradbottom:#e8edf8; --purple:#A6B3D5; --purplebg:#F3F6FF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:transparent; font-family:'Inter',sans-serif; color:var(--gray); padding:.5rem;
+  }
+
+  .callout{
+    margin-bottom:24px;
+  }
+  .callout .label{
+    color:var(--blue); font-weight:700; font-size:16px; margin:0 0 10px;
+  }
+  .callout p{
+    font-size:14px; color:var(--gray); line-height:1.6; margin:0 0 12px;
+  }
+  .callout p:last-child{margin-bottom:0;}
+  .callout .quote{font-style:italic; color:var(--navy);}
+
+  .section-title{
+    font-weight:700; font-size:18px; color:var(--navy); text-align:center; margin:0 0 18px;
+  }
+
+  .outer{
+    border:1px solid var(--border); border-radius:8px; overflow:hidden;
+    background:linear-gradient(to bottom, #ffffff 0%, var(--gradbottom) 100%);
+  }
+
+  .tab-layout{display:grid; grid-template-columns:230px 1fr;}
+  .tab-list{display:flex; flex-direction:column; border-right:1px solid var(--border);}
+  .tab-btn{
+    text-align:left; background:transparent; border:none; border-bottom:1px solid var(--border);
+    padding:16px 18px; font-family:'Inter',sans-serif; font-size:16px; font-weight:600;
+    color:var(--gray); line-height:1.4; cursor:pointer; border-left:3px solid transparent;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .tab-btn:last-child{border-bottom:none;}
+  .tab-btn:hover{background:#f5f6fb;}
+  .tab-btn.active{
+    color:var(--blue); font-weight:700; border-left:3px solid var(--blue); background:#f5f6fb;
+  }
+
+  .tab-content{padding:22px 24px;}
+  .tab-panel{display:none; font-size:14px; color:#444; line-height:1.65;}
+  .tab-panel.active{display:block;}
+  .tab-panel p{margin:0 0 12px;}
+  .tab-panel p:last-child{margin-bottom:0;}
+  .tab-panel .aside{font-style:italic; color:var(--navy);}
+
+  .discuss-bar{
+    background:#eef0f5; border-top:1px solid var(--border);
+    padding:14px 24px; font-size:14px; color:var(--navy);
+  }
+  .discuss-bar strong{color:var(--navy);}
+
+  @media (max-width:700px){
+    .tab-layout{grid-template-columns:1fr;}
+    .tab-list{flex-direction:row; flex-wrap:wrap; border-right:none; border-bottom:1px solid var(--border);}
+    .tab-btn{flex:1 1 auto; border-bottom:none; border-left:none; border-right:1px solid var(--border);}
+    .tab-btn.active{border-left:none; border-bottom:3px solid var(--blue);}
+  }
+</style>
+</head>
+<body>
+
+<div class="callout">
+  <p class="label">If I Am Able to, Will You...</p>
+  <p>You may not have a resolution at the end of the first meeting. That's okay. Isolate the concerns of the merchant by recapping their needs, requirements and decision making process.</p>
+  <p class="quote">You can do this by saying, "During our conversation, I heard you say your biggest concerns were...If I am able to resolve those to your satisfaction, will you be ready to move forward with me and Propelr?"</p>
+</div>
+
+<p class="section-title">If the Merchant Says...</p>
+
+<div class="outer">
+  <div class="tab-layout">
+    <div class="tab-list" id="tabList">
+      <button class="tab-btn active" onclick="showQualTab(0)">I'm not ready to make any decisions or changes.</button>
+      <button class="tab-btn" onclick="showQualTab(1)">I'll need to check with my business partner, spouse, etc. before moving forward.</button>
+      <button class="tab-btn" onclick="showQualTab(2)">I want to move forward but I'm not sure where to start.</button>
+    </div>
+    <div class="tab-content">
+      <div class="tab-panel active" id="qualPanel-0">
+        <p>Absolutely. I completely understand why you wouldn't want to make changes, and many of my best clients felt this way when we first spoke as well. I'm curious, have you had a difficult experience with a payment processing change in the past? Are you open to reviewing how we may be able to support you in the future should the timing better align down the road?</p>
+        <p class="aside">Pivoting to different payment solutions</p>
+        <p>What resources can you use? How will you keep in touch?</p>
+      </div>
+      <div class="tab-panel" id="qualPanel-1">
+        <p><em>[Placeholder — the reference image didn't include a script for this response. Drafted here in the same voice; swap in your actual language.]</em></p>
+        <p>That makes complete sense, a decision like this shouldn't be made alone. Would it help to set up a time when your partner can join us, either in person or on a quick call, so they can hear directly how Propelr would work for your business?</p>
+        <p class="aside">Pivoting to a joint follow-up meeting</p>
+        <p>Who else should be part of that conversation, and when's a good time that works for both of them?</p>
+      </div>
+      <div class="tab-panel" id="qualPanel-2">
+        <p><em>[Placeholder — the reference image didn't include a script for this response. Drafted here in the same voice; swap in your actual language.]</em></p>
+        <p>That's a great place to be. Starting is usually the hardest part, and that's exactly where I can help. Based on what you've shared today, I'd suggest we start with the equipment and pricing setup, that's typically the quickest win for a business like yours.</p>
+        <p class="aside">Pivoting to a clear first step</p>
+        <p>Would it help if I put together a simple next-steps outline so you know exactly what to expect?</p>
+      </div>
+    </div>
+  </div>
+  <div class="discuss-bar">
+    <strong>Discuss:</strong> What could have been done in advance to avoid these concerns during the discovery appointment?
+  </div>
+</div>
+
+<script>
+function showQualTab(index){
+  var tabs = document.querySelectorAll('#tabList .tab-btn');
+  var panels = document.querySelectorAll('.tab-panel');
+  tabs.forEach(function(t, i){ t.classList.toggle('active', i === index); });
+  panels.forEach(function(p, i){ p.classList.toggle('active', i === index); });
+}
+</script>
+</body>
+</html>
