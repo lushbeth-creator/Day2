@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opportunity Grades</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE;
+    --green:#59A398;
+    --navy:#1B2F5B;
+    --purple:#A6B3D5;
+    --gray:#555;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:transparent;width:100%;overflow-x:hidden}
+  body{
+    padding:4px 6px 6px;
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    color:#000;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    margin:0 0 6px;
+    color:var(--green);
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  h2{
+    margin:0;
+    color:var(--navy);
+    font-size:20px;
+    font-weight:700;
+    line-height:1.3;
+  }
+  .lead{margin:10px 0 0;font-size:18px}
+
+  /* Cards */
+  .cards{
+    margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  .card{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    padding:20px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);
+    border:1px solid var(--purple);
+  }
+  .icon{
+    width:44px;height:44px;
+    flex-shrink:0;
+    border-radius:10px;
+    background:linear-gradient(to bottom,#F3F6FF 0%,#E4E9F7 100%);
+    border:1px solid var(--purple);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .icon svg{
+    width:24px;height:24px;
+    stroke:var(--green);fill:none;
+    stroke-width:2;stroke-linecap:round;stroke-linejoin:round;
+  }
+  .card .grade-label{
+    margin:14px 0 2px;
+    color:var(--green);
+    font-size:14px;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  .card h3{
+    margin:0 0 6px;
+    color:var(--navy);
+    font-size:18px;font-weight:700;line-height:1.3;
+  }
+  .card p{margin:0;font-size:14px}
+  .card .btn{margin-top:auto;align-self:flex-start}
+  .card .desc{margin-bottom:16px}
+
+  /* Buttons */
+  .btn{
+    font-family:inherit;
+    font-size:14px;font-weight:700;
+    padding:9px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:background .15s,border-color .15s,color .15s;
+  }
+  .btn-primary{background:var(--blue);border:1px solid var(--blue);color:#fff}
+  .btn-primary:hover{background:var(--green);border-color:var(--green)}
+  .btn-secondary{background:transparent;border:1px solid var(--blue);color:var(--blue)}
+  .btn-secondary:hover{background:var(--green);border-color:var(--green);color:#fff}
+  .btn:focus-visible,.close-btn:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+
+  /* Try it out */
+  .try{margin-top:36px}
+  .try h2{margin:0 0 8px}
+  .try .intro{margin:0 0 20px;font-size:18px}
+  .try .shell{background:linear-gradient(135deg,#fff 0%,#E4E9F7 100%);border:1px solid var(--purple);border-radius:16px;padding:22px}
+  .try .progress{display:flex;gap:8px;margin-bottom:18px}
+  .try .bar{height:5px;flex:1;border-radius:99px;background:#dce1ef}
+  .try .bar.on{background:var(--green)}
+  .try .merchant{display:grid;grid-template-columns:190px 1fr;gap:24px;align-items:stretch}
+  .try .profile{background:var(--navy);border-radius:14px;color:#fff;padding:22px;display:flex;flex-direction:column;justify-content:center;min-height:280px}
+  .try .icon{width:52px;height:52px;border-radius:12px;margin-bottom:16px}
+  .try .icon svg{width:27px;height:27px;stroke-width:1.8}
+  .try .count{font-size:12px;font-weight:800;color:#9ed8cf;text-transform:uppercase;letter-spacing:.08em}
+  .try .profile h3{font-size:21px;line-height:1.25;margin:5px 0 8px}
+  .try .profile p{font-size:15px;color:#edf1fa;margin:0}
+  .try .work{padding:8px 4px;display:flex;flex-direction:column}
+  .try .prompt{color:var(--green);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .try .question{color:var(--navy);font-size:22px;font-weight:800;margin:0 0 6px}
+  .try .hint{font-size:16px;font-weight:600;margin:0 0 16px}
+  .try .choices{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .try .choice{font-family:inherit;border:1px solid var(--blue);background:#fff;color:var(--blue);border-radius:10px;padding:13px 10px;font-weight:800;font-size:16px;cursor:pointer}
+  .try .choice:hover{background:#F3F6FF}
+  .try .choice.selected{background:var(--blue);color:#fff}
+  .try .choice.correct{background:var(--green);border-color:var(--green);color:#fff}
+  .try .choice:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+  .try .feedback{display:none;margin-top:14px;padding:15px 17px;border:1px solid var(--green);border-radius:12px;background:linear-gradient(135deg,#fff,#DAF3EF);color:var(--navy);font-size:16px}
+  .try .feedback.show{display:block}
+  .try .feedback.miss{background:#fff8e6;border-color:#B8860B;color:#9C6B00}
+  .try .feedback strong{display:block;font-size:18px;margin-bottom:3px}
+  .try .nav{margin-top:auto;padding-top:18px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+  .try .navnote{font-size:14px;color:#5a6274}
+  .try .btn{border:1px solid var(--blue);border-radius:9px;padding:9px 15px;background:var(--blue);color:#fff;font-weight:800}
+  .try .btn:hover{background:var(--green);border-color:var(--green)}
+  .try .reset-btn{background:#fff;color:var(--blue)}
+  .try .reset-btn:hover{background:#F3F6FF;border-color:var(--blue)}
+  .try .btn:disabled{opacity:.35;cursor:default;background:var(--blue);border-color:var(--blue)}
+  .try .result{display:none}
+  .try .result.show{display:block}
+  .try .result-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+  .try .win,.try .next{padding:20px;border-radius:14px}
+  .try .win{background:linear-gradient(135deg,#fff,#DAF3EF);border:1px solid var(--green)}
+  .try .next{background:var(--navy);color:#fff}
+  .try .win h3,.try .next h3{margin:0 0 6px;font-size:20px}
+  .try .win h3{color:var(--navy)}
+  .try .next h3{color:#fff}
+  .try .win p,.try .next p{margin:0;font-size:17px}
+  .try .next .eyebrow{color:#9ed8cf}
+  .try .takeaway{margin-top:16px;padding-top:14px;border-top:1px solid var(--purple);font-size:18px;color:var(--navy);font-weight:700}
+
+  /* Modal */
+  .overlay{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;padding:20px;background:rgba(27,47,91,.55)}
+  .overlay.show{display:flex}
+  .modal{position:relative;width:100%;max-width:960px;max-height:88vh;overflow:auto;padding:26px 28px 28px;border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);border:1px solid var(--purple)}
+  .close-btn{position:absolute;top:14px;right:16px;width:36px;height:36px;border:0;background:transparent;color:var(--green);font-size:28px;line-height:1;cursor:pointer}
+  .close-btn:hover{color:var(--blue)}
+  .modal h3{margin:0 40px 8px 0;color:var(--navy);font-size:20px;font-weight:700;line-height:1.3}
+  .modal .m-lead{margin:0 0 20px;font-size:18px}
+  .m-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:32px;border-top:1px solid var(--purple)}
+  .m-sec{padding:16px 0;border-bottom:1px solid var(--purple)}
+  .m-sec h4{margin:0 0 6px;color:var(--green);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .m-sec ul{margin:0;padding-left:18px;font-size:16px}
+  .m-sec li+li{margin-top:4px}
+  .m-sec p{margin:0;font-size:16px}
+  .m-next{margin-top:18px}
+  .m-next #mNext{margin:0;font-size:16px;font-style:italic;color:var(--gray)}
+
+  @media (max-width:820px){
+    .cards{grid-template-columns:1fr}
+    .m-grid{grid-template-columns:1fr}
+    .try .merchant,.try .result-grid{grid-template-columns:1fr}
+    .try .profile{min-height:auto}
+    .try .choices{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<section>
+  <p class="eyebrow">Opportunity Grades</p>
+  <h2>The Grade tells you something about the sales journey.</h2>
+  <p class="lead">For a Rookie, the practical question is simple: How quickly can this opportunity move, how much coordination will it require and who should be working beside me? Grades are a sales-cycle framework. They do not replace underwriting risk assessment.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2.5 17a9.5 9.5 0 1 1 19 0"/><line x1="12" y1="17" x2="6" y2="12"/><circle cx="12" cy="17" r="1"/></svg>
+      </div>
+      <p class="grade-label">Grade 1</p>
+      <h3>Shorter Cycle</h3>
+      <p class="desc">Straightforward payment acceptance and fewer dependencies. These opportunities help build early wins, confidence and portfolio activity.</p>
+      <button class="btn btn-secondary" type="button" data-grade="1">View Grade 1 guide</button>
+    </div>
+    <div class="card">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2.5 17a9.5 9.5 0 1 1 19 0"/><line x1="12" y1="17" x2="12" y2="9.5"/><circle cx="12" cy="17" r="1"/></svg>
+      </div>
+      <p class="grade-label">Grade 2</p>
+      <h3>More Coordination</h3>
+      <p class="desc">A supported integration, replacement or operational dependency can add steps. Good opportunities still belong in the pipeline, but may need more support.</p>
+      <button class="btn btn-secondary" type="button" data-grade="2">View Grade 2 guide</button>
+    </div>
+    <div class="card">
+      <div class="icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M2.5 17a9.5 9.5 0 1 1 19 0"/><line x1="12" y1="17" x2="18" y2="12"/><circle cx="12" cy="17" r="1"/></svg>
+      </div>
+      <p class="grade-label">Grade 3</p>
+      <h3>Strategic Cycle</h3>
+      <p class="desc">Larger, multi-location or integration-heavy opportunities can involve more stakeholders and a longer cycle. Bring leadership alongside you and keep prospecting.</p>
+      <button class="btn btn-secondary" type="button" data-grade="3">View Grade 3 guide</button>
+    </div>
+  </div>
+</section>
+
+<section class="try">
+  <p class="eyebrow">Try It Out!</p>
+  <h2>Which opportunity can you move fastest this week?</h2>
+  <p class="intro">Meet each merchant 1 at a time. Choose the Grade that best reflects the likely sales journey, then see what that means for your next move.</p>
+
+  <div class="shell">
+    <div class="progress"><span class="bar on"></span><span class="bar"></span><span class="bar"></span></div>
+    <div id="merchant" class="merchant">
+      <aside class="profile">
+        <div class="icon" id="tIcon" aria-hidden="true"></div>
+        <span class="count" id="tCount"></span>
+        <h3 id="tName"></h3>
+        <p id="tDesc"></p>
+      </aside>
+      <div class="work">
+        <div class="prompt">Make the call</div>
+        <p class="question">How would you Grade this opportunity?</p>
+        <p class="hint">Think about complexity, dependencies and the likely sales cycle.</p>
+        <div class="choices">
+          <button class="choice" type="button" data-pick="1">Grade 1</button>
+          <button class="choice" type="button" data-pick="2">Grade 2</button>
+          <button class="choice" type="button" data-pick="3">Grade 3</button>
+        </div>
+        <div class="feedback" id="tFeedback" aria-live="polite"></div>
+        <div class="nav">
+          <span class="navnote" id="tNavnote">Choose a Grade to continue.</span>
+          <div style="display:flex;gap:10px">
+            <button class="btn reset-btn" id="tReset" type="button">Reset</button>
+            <button class="btn" id="tNext" type="button" disabled>Next Opportunity &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="result" class="result">
+      <div class="result-grid">
+        <div class="win">
+          <p class="eyebrow">Fastest Path</p>
+          <h3>The local service business gets your first attention.</h3>
+          <p>Its straightforward need and fewer dependencies make it the most likely of these 3 opportunities to move quickly.</p>
+        </div>
+        <div class="next">
+          <p class="eyebrow">And the other 2?</p>
+          <h3>Keep them. Work them differently.</h3>
+          <p>The restaurant and 12-location business can remain valuable opportunities. Bring in the right support and keep the rest of your pipeline moving while they develop.</p>
+        </div>
+      </div>
+      <div class="takeaway">The Grade does not tell you whether an opportunity is &ldquo;good&rdquo; or &ldquo;bad.&rdquo; It helps you understand the sales journey and decide how to spend your time.</div>
+      <div class="nav"><span></span><button class="btn" id="tRestart" type="button">Try Again</button></div>
+    </div>
+  </div>
+</section>
+
+<div class="overlay" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="close-btn" id="closeBtn" type="button" aria-label="Close">&times;</button>
+    <p class="eyebrow" id="mEyebrow"></p>
+    <h3 id="mTitle"></h3>
+    <p class="m-lead" id="mLead"></p>
+    <div class="m-grid" id="mGrid"></div>
+    <div class="m-next">
+      <p class="eyebrow">Your next move</p>
+      <p id="mNext"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+const guides = {
+  1: {
+    eyebrow: 'Grade 1 \u00b7 Shorter Cycle',
+    title: 'Recognize a direct path to an early win',
+    lead: 'Often an owner-operated business with 1 or 2 locations and a terminal that works on its own, separate from any register or business system.',
+    observe: ['The sale total is keyed into both the register and the terminal', 'No visible connection between the terminal and the register', 'Quick service, specialty retail, auto repair or service-based businesses'],
+    ask: ['Is your terminal connected to your register or POS?', 'How many terminals and locations need to accept payments?', 'What payment types do your customers use most?'],
+    cycle: 'Fewer decision-makers and a simple equipment decision. Typically the shortest path from first conversation to activation.',
+    beside: 'You lead this one. Your sales leader is there for pricing questions or a second set of eyes.',
+    next: 'Confirm the merchant\u2019s needs and recommend standalone equipment without adding tools they do not need. Aim to move it this week.'
+  },
+  2: {
+    eyebrow: 'Grade 2 \u00b7 More Coordination',
+    title: 'Keep a good opportunity moving through extra steps',
+    lead: 'Often an established retailer, grocer or restaurant where a POS runs sales, inventory, tables or daily operations.',
+    observe: ['The payment device receives the sale total from another system', 'The POS controls inventory, tables or employee workflows', 'A software company, dealer or reseller supports the POS'],
+    ask: ['What is the exact POS name and version?', 'Who supports or resells the system?', 'Do you want to keep it or consider replacing it?', 'How many terminals or revenue centers do you have?'],
+    cycle: 'Compatibility checks and coordination with a POS provider or reseller add time. A moderate path to activation.',
+    beside: 'Solutioning (James Batte) to confirm compatibility, plus the merchant\u2019s POS provider or reseller.',
+    next: 'Document the exact system, version and provider before promising equipment, timing or cost. Compatibility can vary by version and reseller, so never rely on the product name alone.'
+  },
+  3: {
+    eyebrow: 'Grade 3 \u00b7 Strategic Cycle',
+    title: 'Plan for a longer, higher-value journey',
+    lead: 'Often a franchise, enterprise or multi-location business with centralized decisions, multiple systems or significant implementation needs.',
+    observe: ['A corporate office or franchisor controls technology decisions', 'The current POS restricts processor choice', 'A change affects multiple locations or connected systems', 'Replacement may require major hardware, software or training'],
+    ask: ['Who has authority to approve this change?', 'Is the system under a processing or software contract?', 'Who owns the equipment and the data?', 'Which integrations, locations and functions would be affected?'],
+    cycle: 'Longer discovery, technical review and stakeholder alignment. Greater potential value with a more complex path to activation.',
+    beside: 'Your sales leader and Solutioning (James Batte) from the first conversation forward.',
+    next: 'Bring leadership alongside you before quoting equipment, cost or timing, then keep prospecting so the rest of your pipeline keeps moving while this one develops.'
+  }
+};
+
+const overlay = document.getElementById('overlay');
+const closeBtn = document.getElementById('closeBtn');
+let trigger = null;
+function listSec(title, items){
+  return '<div class="m-sec"><h4>' + title + '</h4><ul>' + items.map(i => '<li>' + i + '</li>').join('') + '</ul></div>';
+}
+function textSec(title, text){
+  return '<div class="m-sec"><h4>' + title + '</h4><p>' + text + '</p></div>';
+}
+function openModal(key, btn){
+  const g = guides[key];
+  trigger = btn;
+  document.getElementById('mEyebrow').textContent = g.eyebrow;
+  document.getElementById('mTitle').textContent = g.title;
+  document.getElementById('mLead').textContent = g.lead;
+  document.getElementById('mNext').textContent = g.next;
+  document.getElementById('mGrid').innerHTML =
+    listSec('What to observe', g.observe) +
+    listSec('What to ask', g.ask) +
+    textSec('Sales-cycle impact', g.cycle) +
+    textSec('Who works beside you', g.beside);
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+  closeBtn.focus();
+}
+function closeModal(){
+  overlay.classList.remove('show');
+  document.body.style.overflow = '';
+  if (trigger) trigger.focus();
+}
+document.querySelectorAll('[data-grade]').forEach(b => b.addEventListener('click', () => openModal(b.dataset.grade, b)));
+closeBtn.addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && overlay.classList.contains('show')) closeModal(); });
+
+/* Try it out */
+const opps = [
+  {name:'Local service business', desc:'An owner-operated business that needs a terminal to start accepting cards.', grade:1,
+   why:'Straightforward acceptance, fewer dependencies and a simpler decision path point to a shorter sales cycle.',
+   move:'This is the kind of opportunity a Rookie should learn to move confidently.',
+   icon:'<svg viewBox="0 0 24 24"><rect x="5" y="2.5" width="14" height="19" rx="2"/><path d="M8 6h8v4H8zM8 14h1M12 14h1M16 14h1M8 17h1M12 17h1M16 17h1"/></svg>'},
+  {name:'Restaurant', desc:'A restaurant replacing a POS that is connected to its payment device today.', grade:2,
+   why:'Replacing a connected POS adds operational dependencies and may require more coordination than a standalone terminal.',
+   move:'Keep the opportunity moving, but verify the environment and use support before setting expectations.',
+   icon:'<svg viewBox="0 0 24 24"><path d="M5 3v7M8 3v7M5 7h3M6.5 10v11M15 3v8c0 2 4 2 4 0V3M17 13v8"/></svg>'},
+  {name:'12-location business', desc:'A business with 12 locations asking whether Propelr can integrate with its current system.', grade:3,
+   why:'Multiple locations, an existing system and integration questions create more stakeholders, technical review and a longer sales journey.',
+   move:'Loop in leadership and Solutioning early while you continue developing the rest of your pipeline.',
+   icon:'<svg viewBox="0 0 24 24"><path d="M5 21V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v17M3 21h18M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3"/></svg>'}
+];
+let step = 0, picked = null;
+const $ = id => document.getElementById(id);
+const choiceBtns = [...document.querySelectorAll('.try .choice')];
+const bars = [...document.querySelectorAll('.try .bar')];
+
+function clearPick(){
+  picked = null;
+  choiceBtns.forEach(b => b.className = 'choice');
+  $('tFeedback').className = 'feedback';
+  $('tFeedback').innerHTML = '';
+  $('tNext').disabled = true;
+  $('tNavnote').textContent = 'Choose a Grade to continue.';
+}
+function renderOpp(){
+  const d = opps[step];
+  $('tIcon').innerHTML = d.icon;
+  $('tCount').textContent = 'Opportunity ' + (step + 1) + ' of 3';
+  $('tName').textContent = d.name;
+  $('tDesc').textContent = d.desc;
+  $('tNext').innerHTML = step === 2 ? 'See the Portfolio View &rarr;' : 'Next Opportunity &rarr;';
+  bars.forEach((b, n) => b.classList.toggle('on', n <= step));
+  clearPick();
+}
+choiceBtns.forEach(b => b.addEventListener('click', () => {
+  if (picked) return;
+  const d = opps[step];
+  picked = +b.dataset.pick;
+  const right = picked === d.grade;
+  b.classList.add('selected');
+  choiceBtns.find(x => +x.dataset.pick === d.grade).classList.add('correct');
+  const fb = $('tFeedback');
+  fb.innerHTML = '<strong>' + (right ? 'That\u2019s the right read.' : 'Take another look at the sales journey.') + '</strong>' +
+    d.why + '<br><br><b>Next move:</b> ' + d.move;
+  fb.className = 'feedback show' + (right ? '' : ' miss');
+  $('tNext').disabled = false;
+  $('tNavnote').textContent = right ? 'You\u2019re reading the cycle.' : 'The Grade is about complexity and cycle, not merchant value.';
+}));
+$('tNext').addEventListener('click', () => {
+  if (step < 2){ step++; renderOpp(); }
+  else {
+    $('merchant').style.display = 'none';
+    $('result').classList.add('show');
+    bars.forEach(b => b.classList.add('on'));
+  }
+});
+$('tReset').addEventListener('click', clearPick);
+$('tRestart').addEventListener('click', () => {
+  step = 0;
+  $('merchant').style.display = 'grid';
+  $('result').classList.remove('show');
+  renderOpp();
+});
+renderOpp();
+</script>
+</body>
+</html>
