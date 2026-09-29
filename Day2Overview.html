@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Day 2: Solutions, Pricing & Building a Healthy Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue:#5D70AE;
+    --green:#59A398;
+    --navy:#1B2F5B;
+    --purple:#A6B3D5;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:transparent;width:100%;overflow-x:hidden}
+  body{
+    padding:4px 6px 6px;
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+    color:#000;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .overview h1{
+    margin:0;
+    color:var(--navy);
+    font-size:34px;
+    font-weight:800;
+    line-height:1.12;
+  }
+  .overview .lead{
+    margin:14px 0 0;
+    font-size:18px;
+    color:#000;
+  }
+  .destination{
+    margin-top:24px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+  }
+  .dest{
+    min-width:0;
+    padding:20px;
+    border-radius:15px;
+    background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);
+    border:1px solid var(--purple);
+  }
+  .dest.green{
+    background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%);
+    border-color:#b9ded8;
+  }
+  .eyebrow{
+    margin:0 0 6px;
+    color:var(--green);
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  .dest p.statement{
+    margin:0;
+    color:var(--navy);
+    font-size:18px;
+    font-weight:700;
+    line-height:1.5;
+  }
+  @media (max-width:760px){
+    .destination{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    .overview h1{font-size:28px}
+  }
+</style>
+</head>
+<body>
+<header class="overview">
+  <h1>Solutions, Pricing &amp; Building a Healthy Portfolio</h1>
+  <p class="lead">Day 1 established why accurate qualification matters. Today, Pilots use that foundation to decide which opportunities to pursue, what questions to ask, what solution fits and when complexity should bring another Propelr resource into the conversation.</p>
+  <div class="destination">
+    <div class="dest green">
+      <p class="eyebrow">Today's destination</p>
+      <p class="statement">Recognize shorter sales cycles, qualify before solutioning and build a portfolio that keeps moving.</p>
+    </div>
+    <div class="dest">
+      <p class="eyebrow">Why this comes next</p>
+      <p class="statement">The best solution is not the product you know best. It is the one that fits the merchant you actually qualified.</p>
+    </div>
+  </div>
+</header>
+</body>
+</html>
