@@ -59,6 +59,13 @@ body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding
 .dname{display:block;font-size:20px;font-weight:700;color:#1B2F5B;margin-bottom:5px}
 .ddesc{display:block;font-size:16px;color:#000;line-height:1.5}
 
+#devrow-clover{grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}
+#devrow-clover .db{padding:9px 9px}
+#devrow-clover .dbrand{font-size:12px}
+#devrow-clover .dname{font-size:17px}
+#devrow-clover .ddesc{font-size:14px}
+@media(max-width:900px){#devrow-clover{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+
 /* Reflect / callout pattern */
 .reflect-label{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#59A398;margin-top:16px;margin-bottom:4px}
 .reflect-text{font-size:18px;color:#555;font-style:italic;line-height:1.55}
@@ -127,7 +134,6 @@ body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding
 </head>
 <body>
 
-<p class="intro-eyebrow">Solutions Portfolio</p>
 <p class="intro-title">Qualify first, then match the solution.</p>
 <p class="intro-body">Dejavoo, PAX, Clover, Valor PayTech and CardPointe each solve a different merchant need. Each tab notes where that solution typically lands on the Grade scale, but a device never paints the full picture on its own. The merchant's environment, integrations and number of locations determine the final Grade.</p>
 
