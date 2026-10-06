@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Cost Shifting Programs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.ptitle{font-weight:700;font-size:20px;color:#1B2F5B;margin-bottom:12px}
+.pbody{font-size:18px;color:#000;line-height:1.75;margin-bottom:20px}
+
+.toggle-row{display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap}
+.toggle-btn{
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#5D70AE;
+  background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);border:1px solid #5D70AE;border-radius:8px;padding:.55rem 1.3rem;cursor:pointer;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.toggle-btn:hover{background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%)}
+.toggle-btn.active{background:#59A398;color:#ffffff;border-color:#59A398}
+.toggle-btn:focus-visible{outline:2px solid #1B2F5B;outline-offset:2px}
+
+.panel{display:none;border:1px solid #A6B3D5;border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#e4e9f7 100%);padding:1.6rem 1.8rem}
+.panel.active{display:block}
+.kicker{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#59A398;margin-bottom:8px}
+.heading{font-size:20px;font-weight:700;color:#1B2F5B;margin-bottom:8px;line-height:1.3}
+.text{font-size:18px;color:#000;line-height:1.6}
+.list-label{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#5D70AE;margin:22px 0 4px}
+
+.rows{border-top:1px solid #A6B3D5}
+.row{display:grid;grid-template-columns:170px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid #A6B3D5}
+.row-label{font-size:16px;font-weight:700;color:#1B2F5B}
+.row-text{font-size:16px;color:#000;line-height:1.55}
+
+.banner{display:flex;gap:14px;align-items:flex-start;background:#fff8e6;border-left:4px solid #B8860B;border-radius:0 12px 12px 0;padding:16px 20px;margin-top:20px}
+.banner svg{flex-shrink:0;width:24px;height:24px;margin-top:2px;stroke:#B8860B;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.banner-label{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B8860B;margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chip{font-size:14px;font-weight:700;color:#9C6B00;background:#ffffff;border:1px solid #B8860B;border-radius:20px;padding:4px 12px}
+.banner-text{font-size:16px;color:#9C6B00;line-height:1.55}
+
+@media(max-width:620px){
+  .row{grid-template-columns:1fr;gap:2px}
+  .panel{padding:1.2rem 1.2rem}
+}
+</style>
+</head>
+<body>
+
+<p class="ptitle">Cost shifting is not a fourth pricing model.</p>
+<p class="pbody">Surcharging, cash discount and dual pricing change how a merchant presents costs to customers. They sit on top of the pricing model in your proposal, and each one has its own structure, display requirements and compliance review.</p>
+
+<div class="toggle-row" role="tablist">
+  <button class="toggle-btn active" type="button" role="tab" aria-selected="true" data-target="surcharge">Surcharge</button>
+  <button class="toggle-btn" type="button" role="tab" aria-selected="false" data-target="cash">Cash Discount</button>
+  <button class="toggle-btn" type="button" role="tab" aria-selected="false" data-target="dual">Dual Pricing</button>
+</div>
+
+<div class="panel active" id="panel-surcharge" role="tabpanel">
+  <p class="kicker">Credit cards only</p>
+  <p class="heading">Surcharge</p>
+  <p class="text">A disclosed fee added to eligible credit card transactions. Debit and prepaid cards are never surcharged, even when processed without a PIN.</p>
+  <p class="list-label">What the merchant must display</p>
+  <div class="rows">
+    <div class="row"><p class="row-label">Posted prices</p><p class="row-text">The base price. Some states, such as New York, also require the total card price to be shown.</p></div>
+    <div class="row"><p class="row-label">Store entrance</p><p class="row-text">A sign stating that a surcharge is added to credit card transactions.</p></div>
+    <div class="row"><p class="row-label">Point of sale</p><p class="row-text">A sign showing the surcharge percentage and that it applies to credit cards only.</p></div>
+    <div class="row"><p class="row-label">Receipt</p><p class="row-text">The surcharge on its own line with the dollar amount.</p></div>
+    <div class="row"><p class="row-label">Online or phone</p><p class="row-text">The surcharge disclosed before the customer completes payment.</p></div>
+  </div>
+</div>
+
+<div class="panel" id="panel-cash" role="tabpanel">
+  <p class="kicker">A discount for cash</p>
+  <p class="heading">Cash Discount</p>
+  <p class="text">The posted price is the card price, and customers who pay with cash receive a discount. It is always a discount for cash, never a fee for using a card.</p>
+  <p class="list-label">What the merchant must display</p>
+  <div class="rows">
+    <div class="row"><p class="row-label">Posted prices</p><p class="row-text">The card price.</p></div>
+    <div class="row"><p class="row-label">Store entrance</p><p class="row-text">A sign stating that a discount is available for paying with cash.</p></div>
+    <div class="row"><p class="row-label">Point of sale</p><p class="row-text">A sign showing the discount percentage and that it applies to cash only.</p></div>
+    <div class="row"><p class="row-label">Receipt</p><p class="row-text">The cash discount on its own line, shown as a negative dollar amount.</p></div>
+  </div>
+</div>
+
+<div class="panel" id="panel-dual" role="tabpanel">
+  <p class="kicker">Two prices, customer chooses</p>
+  <p class="heading">Dual Pricing</p>
+  <p class="text">Every item carries two prices, one for cash and one for card, so the customer sees both before choosing how to pay.</p>
+  <p class="list-label">What the merchant must display</p>
+  <div class="rows">
+    <div class="row"><p class="row-label">Posted prices</p><p class="row-text">Both a cash price and a card price on every item, shelf or menu.</p></div>
+    <div class="row"><p class="row-label">Store entrance</p><p class="row-text">A sign stating that prices differ based on payment method.</p></div>
+    <div class="row"><p class="row-label">Point of sale</p><p class="row-text">Both prices visible at checkout before the customer pays.</p></div>
+    <div class="row"><p class="row-label">Receipt</p><p class="row-text">The price charged, based on how the customer paid.</p></div>
+  </div>
+</div>
+
+<div class="banner" role="note">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>
+  <div>
+    <p class="banner-label">Surcharging is prohibited in</p>
+    <div class="chips"><span class="chip">Connecticut</span><span class="chip">Maine</span><span class="chip">Massachusetts</span><span class="chip">Puerto Rico</span></div>
+    <p class="banner-text">Other states add their own rules, such as Colorado's 2% cap. Rules and caps change, so confirm the approved program with Propelr Compliance or Legal before quoting any structure, rate or jurisdiction.</p>
+  </div>
+</div>
+
+<script>
+document.querySelectorAll('.toggle-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.toggle-btn').forEach(function(b){
+      var on = b === btn;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    var target = btn.getAttribute('data-target');
+    document.querySelectorAll('.panel').forEach(function(p){
+      p.classList.toggle('active', p.id === 'panel-' + target);
+    });
+  });
+});
+</script>
+</body>
+</html>

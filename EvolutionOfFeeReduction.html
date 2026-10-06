@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propelr | Evolution of Fee Reduction</title>
+  <style>
+    :root {
+      --blue:#5D70AE;
+      --green:#59A398;
+      --purple:#A6B3D5;
+      --light-purple:#F3F6FF;
+      --light-blue:#E4E9F7;
+      --light-mint:#DAF3EF;
+      --navy:#1B2F5B;
+      --ink:#000000;
+      --gold-bg:#FFF8E6;
+      --gold-border:#B8860B;
+      --gold-text:#9C6B00;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      padding:.5rem;
+      background:transparent;
+      color:var(--ink);
+      font-family:Inter, Aptos, "Segoe UI", Arial, sans-serif;
+    }
+
+    button { font:inherit; }
+
+    .experience { width:100%; margin:auto; }
+
+    .eyebrow {
+      margin:0 0 8px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    h1 {
+      margin:0 0 12px;
+      color:var(--navy);
+      font-size:20px;
+      font-weight:700;
+      line-height:1.3;
+    }
+
+    .intro-copy {
+      margin:0 0 20px;
+      font-size:18px;
+      line-height:1.65;
+      color:var(--ink);
+    }
+
+    .intro {
+      margin-bottom:28px;
+    }
+
+
+    .milestones {
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:0;
+      margin:10px 0 28px;
+      padding:0 16px;
+    }
+    .milestones::before{
+      content:"";
+      position:absolute;
+      left:8%;
+      right:8%;
+      top:25px;
+      height:2px;
+      background:var(--purple);
+      z-index:0;
+    }
+
+    .milestone {
+      position:relative;
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:7px;
+      padding:0 6px;
+      border:0;
+      background:transparent;
+      color:var(--navy);
+      cursor:pointer;
+      transition:background .15s ease,border-color .15s ease,color .15s ease;
+    }
+
+    .milestone:hover {
+      color:var(--blue);
+    }
+
+    .marker {
+      display:grid;
+      place-items:center;
+      width:50px;
+      height:50px;
+      flex-shrink:0;
+      color:var(--green);
+      background:linear-gradient(to bottom,#F3F6FF 0%,#E4E9F7 100%);
+      border:1px solid var(--purple);
+      border-radius:50%;
+      transition:background .18s ease,color .18s ease;
+    }
+
+    .marker svg {
+      width:18px;
+      height:18px;
+      fill:none;
+      stroke:currentColor;
+      stroke-width:1.8;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+    }
+
+    .milestone-text { display:flex; flex-direction:column; text-align:center; }
+
+    .year {
+      display:block;
+      margin-bottom:2px;
+      color:var(--green);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .name {
+      display:block;
+      color:var(--navy);
+      font-size:15px;
+      font-weight:700;
+      line-height:1.2;
+      white-space:nowrap;
+    }
+
+    .milestone[aria-selected="true"] { color:var(--blue); }
+    .milestone[aria-selected="true"] .marker {
+      color:#ffffff;
+      background:var(--blue);
+      border-color:var(--blue);
+    }
+    .milestone[aria-selected="true"] .year { color:var(--green); }
+    .milestone[aria-selected="true"] .name { color:var(--blue); }
+
+    .next-row { display:flex; justify-content:flex-end; margin-bottom:22px; }
+
+    .next-pill {
+      display:inline-block;
+      border:none;
+      background:none;
+      padding:0;
+      color:var(--navy);
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      transition:color .15s ease;
+    }
+
+    .next-pill:hover { color:var(--green); }
+
+    .milestone:focus-visible {
+      outline:3px solid var(--purple);
+      outline-offset:3px;
+      border-radius:999px;
+    }
+
+    .detail {
+      display:grid;
+      grid-template-columns:minmax(210px,.82fr) minmax(0,1.18fr);
+      gap:16px;
+      margin-bottom:16px;
+      padding:22px 24px;
+      background:linear-gradient(135deg,#ffffff 0%,var(--light-blue) 100%);
+      border:1px solid var(--purple);
+      border-radius:16px;
+    }
+
+    .detail-kicker {
+      margin:0 0 6px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+    }
+
+    .detail h2 {
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:20px;
+      font-weight:700;
+      line-height:1.3;
+    }
+
+    .detail-summary {
+      margin:0;
+      color:var(--ink);
+      font-size:18px;
+      line-height:1.6;
+    }
+
+    .change-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .change-card {
+      min-width:0;
+      padding:16px;
+      background:linear-gradient(135deg,#ffffff 0%,var(--light-blue) 100%);
+      border:1px solid var(--purple);
+      border-radius:12px;
+    }
+
+    .change-card span {
+      display:block;
+      margin-bottom:7px;
+      color:var(--green);
+      font-size:14px;
+      font-weight:800;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+
+    .change-card p {
+      margin:0;
+      color:var(--ink);
+      font-size:18px;
+      line-height:1.5;
+    }
+
+    .takeaway {
+      display:flex;
+      gap:16px;
+      align-items:flex-start;
+      padding:20px 22px;
+      color:var(--navy);
+      background:linear-gradient(135deg,#ffffff 0%,var(--light-mint) 100%);
+      border:1px solid var(--green);
+      border-radius:15px;
+    }
+
+    .takeaway-icon {
+      display:grid;
+      place-items:center;
+      flex:0 0 38px;
+      width:38px;
+      height:38px;
+      color:var(--green);
+      background:linear-gradient(to bottom,#F3F6FF 0%,#E4E9F7 100%);
+      border:1px solid var(--purple);
+      border-radius:10px;
+      font-weight:900;
+    }
+
+    .takeaway strong { display:block; margin-bottom:4px; font-size:20px; }
+    .takeaway p { margin:0; color:var(--navy); font-size:18px; line-height:1.55; }
+
+    @media (max-width:900px) {
+      .intro,.detail { grid-template-columns:1fr; }
+      .milestones { min-width:760px; }
+      .change-grid { grid-template-columns:1fr; }
+      .milestones::before { left:8%; right:8%; }
+    }
+    @media (max-width:900px) {
+      body { overflow-x:auto; }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after { transition:none!important; }
+    }
+  
+    .detail{grid-template-columns:1fr;background:linear-gradient(135deg,#ffffff 0%,var(--light-blue) 100%)}
+    .milestone-count{margin:0 0 5px;color:var(--green);font-size:14px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+    .milestone-era{margin:0 0 4px;color:var(--green);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .milestone-head h2{margin:0 0 6px}
+    .milestone-head .detail-kicker{margin:0 0 10px;color:var(--green);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .click-controls{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin-top:0;padding-top:14px;border-top:1px solid var(--purple)}
+    .progress{text-align:center;color:var(--navy);font-size:14px;font-weight:700}
+    .next-btn,.back-btn{border-radius:9px;padding:10px 16px;font-weight:700;cursor:pointer}
+    .next-btn{justify-self:end;border:0;background:var(--blue);color:#fff}
+    .next-btn:hover{background:var(--green)}
+    .back-btn{justify-self:start;border:1px solid var(--blue);background:transparent;color:var(--blue)}
+    .back-btn:hover{background:var(--green);border-color:var(--green);color:#fff}
+    .back-btn:disabled{opacity:.35;cursor:default;background:transparent;color:var(--blue);border-color:var(--blue)}
+.banner{margin-top:16px;padding:18px 20px;border-radius:0 12px 12px 0;font-size:18px;line-height:1.6;color:#000}
+    .banner.coach{border-left:5px solid var(--gold-border);background:var(--gold-bg)}
+    .banner.coach strong{color:var(--gold-text)}
+    .banner.try{border-left:5px solid var(--green);background:linear-gradient(135deg,#ffffff 0%,var(--light-mint) 100%)}
+    .banner.try strong{color:var(--navy)}
+.worth-label{margin:0 0 4px;color:var(--green);font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .worth-text{margin:0;color:#555;font-size:18px;font-style:italic;line-height:1.6}
+</style>
+</head>
+<body>
+  <main class="experience">
+    <section class="intro" aria-labelledby="page-title">
+      <div>
+        <h1 id="page-title">Dual pricing and surcharging weren't always legal.</h1>
+        <p class="intro-copy">Both programs exist today because of a chain of network policy, federal law, antitrust litigation and court rulings. Move through each milestone to see what changed, why it mattered and what it means for the conversations you have with merchants today.</p>
+      </div>
+    </section>
+
+    <article class="detail" id="fee-detail" aria-live="polite">
+      <div class="milestone-head">
+        <p class="milestone-era" id="milestoneEra"></p>
+        <h2 id="detailTitle"></h2>
+        <p class="detail-summary" id="detailSummary"></p>
+      </div>
+      <div class="change-grid">
+        <div class="change-card"><span>What changed</span><p id="detailEase"></p></div>
+        <div class="change-card"><span>Why it mattered</span><p id="detailRisk"></p></div>
+        <div class="change-card"><span>Pilot connection</span><p id="detailResponse"></p></div>
+      </div>
+      <div class="worth" id="worthNoting" hidden>
+        <p class="worth-label">Worth noting</p>
+        <p class="worth-text">Gas stations have posted a cash price and a credit price side by side for decades. They were the earliest adopters of dual pricing and are still the easiest real-world example when a merchant asks what it looks like.</p>
+      </div>
+      <div class="click-controls">
+        <button type="button" class="back-btn" id="backBtn">← Previous milestone</button>
+        <span class="progress" id="progress">1 of 7</span>
+        <button type="button" class="next-btn" id="nextBtn">Next milestone →</button>
+      </div>
+    </article>
+
+    <div class="banner coach"><strong>The pattern to notice:</strong> Cash discount and surcharge may both reduce what a merchant pays to accept cards, but they developed through different legal and network paths. That is why their structure, disclosures and rules cannot be treated as interchangeable.</div>
+    <div class="banner try"><strong>Try it Out!</strong> A merchant says, &ldquo;I just want the customer to cover my fees.&rdquo; What would you need to clarify before deciding whether surcharge, cash discount or dual pricing belongs here?</div>
+  </main>
+
+  <script>
+    const history = [
+  {
+    "kicker": "",
+    "title": "Card networks simply ban surcharging.",
+    "summary": "Before 1980, network rules did not allow a merchant to add a surcharge for paying with a credit card.",
+    "ease": "Surcharging was restricted at the network level.",
+    "risk": "Merchants could not add a card-use fee at checkout.",
+    "response": "Fee reduction has always depended on more than merchant preference. Program rules shape what can be offered."
+  },
+  {
+    "kicker": "",
+    "title": "States write the ban into law too.",
+    "summary": "During the 1980s, a number of states went further and wrote their own surcharge bans directly into law.",
+    "ease": "Restrictions moved beyond network policy into state law.",
+    "risk": "Where a merchant operated became part of the surcharge conversation.",
+    "response": "Location matters. Never assume the same surcharge rules apply everywhere."
+  },
+  {
+    "kicker": "",
+    "title": "The Durbin Amendment protects cash discounts.",
+    "summary": "The 2010 Dodd-Frank Wall Street Reform and Consumer Protection Act included the Durbin Amendment, which protected a merchant's right to offer a discount for paying with cash. Card networks could no longer prohibit it.",
+    "ease": "Cash discounting received clear federal protection.",
+    "risk": "Cash discount and surcharge now followed clearly different legal paths.",
+    "response": "Do not use “cash discount” and “surcharge” as interchangeable labels. The structure matters."
+  },
+  {
+    "kicker": "",
+    "title": "Visa and Mastercard drop their own ban.",
+    "summary": "As part of a broader antitrust settlement, Visa and Mastercard dropped their network-level ban on surcharging.",
+    "ease": "Network policy opened a path for eligible credit card surcharging.",
+    "risk": "Surcharging became possible in more places, but only with rules and disclosures.",
+    "response": "Possible does not mean automatic. Confirm the approved program before positioning it."
+  },
+  {
+    "kicker": "",
+    "title": "Courts begin striking down state bans.",
+    "summary": "Merchants challenged the remaining state surcharge bans in federal court, and some were struck down as unconstitutional restrictions on speech.",
+    "ease": "Several state restrictions were successfully challenged.",
+    "risk": "The landscape became more permissive but also more complex.",
+    "response": "A remembered state list is not a reliable sales tool. Current requirements need to be verified."
+  },
+  {
+    "kicker": "",
+    "title": "The Supreme Court rules it is a speech issue.",
+    "summary": "The Supreme Court held that how a merchant frames the price difference is a matter of speech, reinforcing that surcharge bans can face a First Amendment challenge.",
+    "ease": "How the price difference is communicated became central to the legal question.",
+    "risk": "The language and display at checkout are part of compliance, not just marketing.",
+    "response": "How a program is presented to the cardholder matters as much as the program itself."
+  },
+  {
+    "kicker": "",
+    "title": "Dual pricing is the most widely used approach.",
+    "summary": "The surcharge landscape is still a patchwork by state. Dual pricing, which shows a cash price and a card price at the point of sale, is the most widely used approach today. A cash discount framed as a penalty for using a card can drift into an unlawful surcharge.",
+    "ease": "Merchants have more fee-reduction options than ever.",
+    "risk": "Each program still carries its own requirements for pricing, signage and eligibility.",
+    "response": "Start with the merchant's goal, then use current Propelr guidance to confirm the approved path."
+  }
+];
+
+    const milestoneMeta = [{"era": "Before 1980 · Card network policy"}, {"era": "The 1980s · State law"}, {"era": "2010–11 · Federal law"}, {"era": "January 2013 · Network policy"}, {"era": "2013–15 · Judicial rulings"}, {"era": "2017 · Supreme Court"}, {"era": "Today · Current landscape"}];
+    let current = 0;
+
+    function showMilestone(index) {
+      current = index;
+      const item = history[index];
+      document.getElementById('milestoneEra').textContent = milestoneMeta[index].era;
+      document.getElementById('detailTitle').textContent = item.title;
+      document.getElementById('detailSummary').textContent = item.summary;
+      document.getElementById('detailEase').textContent = item.ease;
+      document.getElementById('detailRisk').textContent = item.risk;
+      document.getElementById('detailResponse').textContent = item.response;
+      document.getElementById('worthNoting').hidden = index !== history.length - 1;
+      document.getElementById('progress').textContent = (index + 1) + ' of ' + history.length;
+      document.getElementById('backBtn').disabled = index === 0;
+      document.getElementById('nextBtn').textContent = index === history.length - 1 ? 'Start again ↻' : 'Next milestone →';
+    }
+
+    document.getElementById('backBtn').addEventListener('click', () => {
+      if (current > 0) showMilestone(current - 1);
+    });
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      showMilestone(current === history.length - 1 ? 0 : current + 1);
+    });
+
+    showMilestone(0);
+  </script>
+</body>
+</html>
