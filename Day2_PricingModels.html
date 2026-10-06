@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propelr: Pricing Models</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent;font-family:'Inter',sans-serif;color:#1a1a2e;padding:.5rem}
+
+.ptitle{font-family:'Inter',sans-serif;font-weight:700;font-size:20px;color:#1B2F5B;margin-bottom:12px}
+.pbody{font-size:18px;color:#000;line-height:1.75;margin-bottom:20px}
+
+.toggle-row{display:flex;gap:8px;margin-bottom:20px}
+.toggle-btn{
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:#5D70AE;
+  background:linear-gradient(135deg,#ffffff 0%,#E4E9F7 100%);border:1px solid #5D70AE;border-radius:8px;padding:.55rem 1.3rem;cursor:pointer;
+  transition:background .15s ease,color .15s ease,border-color .15s ease;
+}
+.toggle-btn:hover{background:linear-gradient(135deg,#ffffff 0%,#DAF3EF 100%)}
+.toggle-btn.active{background:#59A398;color:#ffffff;border-color:#59A398}
+
+.model-panel{display:none;border:1px solid #A6B3D5;border-radius:16px;background:linear-gradient(135deg,#ffffff 0%,#e4e9f7 100%);padding:1.6rem 1.8rem}
+.model-panel.active{display:block}
+.stack-kicker{font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#59A398;margin-bottom:8px}
+.panel-heading{font-size:20px;font-weight:700;color:#1B2F5B;margin:2px 0 8px;line-height:1.3}
+.panel-text{font-size:18px;color:#000;line-height:1.6;margin-bottom:18px}
+.model-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.model-fact{background:#ffffff;border:1px solid #A6B3D5;border-radius:12px;padding:14px 16px}
+.model-fact-label{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#59A398;margin-bottom:6px}
+.model-fact-value{font-size:18px;color:#000;font-weight:600;line-height:1.4;margin:0}
+.tradeoff-note{background:#fff8e6;border-left:4px solid #B8860B;border-radius:0 12px 12px 0;padding:16px 20px;color:#9C6B00;font-size:18px;line-height:1.55}
+.tradeoff-note b{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#B8860B;display:block;margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<p class="ptitle">Same cost stack, different presentation.</p>
+<p class="pbody">Every proposal starts with understanding how a merchant is priced today. When you know how flat rate, tiered and interchange-plus pricing each handle the same underlying costs, you can read a merchant's statement with confidence, explain the difference clearly and build a proposal that fits how they actually process.</p>
+
+<div class="toggle-row">
+  <button class="toggle-btn active" data-target="flat">Flat Rate</button>
+  <button class="toggle-btn" data-target="tiered">Tiered</button>
+  <button class="toggle-btn" data-target="plus">Interchange+</button>
+</div>
+
+  <div class="model-panel active" id="model-flat">
+    <p class="stack-kicker">Simple and predictable</p>
+    <p class="panel-heading">Flat Rate</p>
+    <p class="panel-text">One fixed percentage, often with a per-transaction fee, applies regardless of card type. The provider absorbs variation in the underlying cost and presents one easy-to-understand price.</p>
+    <div class="model-grid">
+      <div class="model-fact"><p class="model-fact-label">Best Fit</p><p class="model-fact-value">Merchants prioritizing simplicity and fast setup</p></div>
+      <div class="model-fact"><p class="model-fact-label">Strength</p><p class="model-fact-value">Predictable costs and easy reconciliation</p></div>
+      <div class="model-fact"><p class="model-fact-label">Watch For</p><p class="model-fact-value">May cost more for high volume or debit-heavy businesses</p></div>
+    </div>
+    <div class="tradeoff-note"><b>Advisor lens:</b> Simple does not automatically mean inexpensive. Lower-cost transactions are not separately passed through to the merchant.</div>
+  </div>
+
+  <div class="model-panel" id="model-tiered">
+    <p class="stack-kicker">Buckets based on qualification</p>
+    <p class="panel-heading">Tiered Pricing</p>
+    <p class="panel-text">Transactions are grouped into qualified, mid-qualified and non-qualified tiers. The rate depends on card type, rewards level and how the transaction was entered.</p>
+    <div class="model-grid">
+      <div class="model-fact"><p class="model-fact-label">Best Fit</p><p class="model-fact-value">Legacy arrangements where bucket pricing is already established</p></div>
+      <div class="model-fact"><p class="model-fact-label">Strength</p><p class="model-fact-value">Easy headline rates for sales conversations</p></div>
+      <div class="model-fact"><p class="model-fact-label">Watch For</p><p class="model-fact-value">Limited transparency and unexpected non-qualified costs</p></div>
+    </div>
+    <div class="tradeoff-note"><b>Advisor lens:</b> A low qualified rate does not tell the whole story. Merchants need to understand where their actual transactions land.</div>
+  </div>
+
+  <div class="model-panel" id="model-plus">
+    <p class="stack-kicker">Cost plus transparent markup</p>
+    <p class="panel-heading">Interchange+</p>
+    <p class="panel-text">The merchant pays the actual interchange and network costs plus a separately stated processor or acquirer markup. The statement shows cost drivers instead of blending them into one rate.</p>
+    <div class="model-grid">
+      <div class="model-fact"><p class="model-fact-label">Best Fit</p><p class="model-fact-value">Larger or more sophisticated merchants seeking visibility</p></div>
+      <div class="model-fact"><p class="model-fact-label">Strength</p><p class="model-fact-value">Transparent costs and direct benefit from lower interchange</p></div>
+      <div class="model-fact"><p class="model-fact-label">Watch For</p><p class="model-fact-value">More complex statements and reconciliation</p></div>
+    </div>
+    <div class="tradeoff-note"><b>Advisor lens:</b> Transparency creates a better optimization conversation, but the merchant must be comfortable reading a more detailed statement.</div>
+  </div>
+
+<script>
+document.querySelectorAll('.toggle-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.toggle-btn').forEach(function(b){ b.classList.toggle('active', b === btn); });
+    var target = btn.getAttribute('data-target');
+    document.querySelectorAll('.model-panel').forEach(function(p){
+      p.classList.toggle('active', p.id === 'model-' + target);
+    });
+  });
+});
+</script>
+</body>
+</html>
